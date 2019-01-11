@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-import asyncio
+from asyncio import get_event_loop
 from argparse import ArgumentParser
-import aiohttp
+from aiohttp import ClientSession
 from typing import Generator
 from os import system
 
@@ -12,10 +12,11 @@ class Halligan:
     def __init__(self):
         self.dir_list = ""
         self.url = ""
-        self.executor = asyncio.get_event_loop().run_in_executor
+        self.executor = get_event_loop().run_in_executor
         self.i = 1
         self.found = []
         self.times = []
+
 
     def exceptor(self, method_name: str, exception: Exception):
         try:
@@ -23,7 +24,6 @@ class Halligan:
             exit(1)
         except Exception as e:
             print("Error! in exceptor: " + str(e))
-    x = asyncio.get_event_loop()
 
 
     def get_args(self):
@@ -72,6 +72,7 @@ class Halligan:
             return True
         except Exception as e:
             print("Error! in clearscreen: " + str(e))
+
 
     def bruce(self):
         print("\n----------------------------------------------------------------------------------")
@@ -122,7 +123,7 @@ class Halligan:
             self.pre_run()
             base = self.url
             urls = [(base + d).rstrip("\n") for d in self.read_file()]
-            async with aiohttp.ClientSession() as session:
+            async with ClientSession() as session:
                 [await self.send_http_request(u, session) for u in urls]
             print("\nLegitimate Paths Discovered")
             print("----------------------------")
@@ -133,7 +134,7 @@ class Halligan:
 
 
 def main():
-    loop = asyncio.get_event_loop()
+    loop = get_event_loop()
     loop.run_until_complete(loop.create_task(Halligan().controller()))
 
 
