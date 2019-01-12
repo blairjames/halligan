@@ -137,7 +137,7 @@ class Halligan:
                 [print(x) for x in self.found]
                 print("\n")
             else:
-                print("No Legitimate Paths Discovered..")
+                print("\nNo Legitimate Paths Discovered..")
             avg = sum(self.times) / len(self.times)
             print("Average Request Time: " + str(avg))
         except Exception as e:
