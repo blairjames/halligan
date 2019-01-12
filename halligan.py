@@ -5,6 +5,7 @@ from argparse import ArgumentParser
 from aiohttp import ClientSession
 from typing import Generator
 from os import system
+from time import perf_counter as pc
 
 
 class Halligan:
@@ -90,21 +91,24 @@ class Halligan:
             self.exceptor("Error in read_file: ", e)
 
 
-    async def process_response(self, response, url):
+    async def process_response(self, response, url, apd):
         try:
             print(str(self.i) + " - " + url)
-            if response.status == 200:
+            if response == 200:
                 print("\nPath Discovered: " + url + "\n")
-                self.found.append(url)
+                apd(url)
             self.i += 1
         except Exception as e:
             self.exceptor("process_response", e)
 
 
-    async def send_http_request(self, url: str, session):
+    async def send_http_request(self, url: str, session, apd, timeapd):
         try:
+            t1 = pc()
             async with session.get(url) as res:
-                await self.process_response(res, url)
+                await self.process_response(res.status, url, apd)
+            t2 = pc()
+            timeapd(t2 - t1)
         except Exception as e:
             self.exceptor("send_http_request", e)
 
@@ -124,11 +128,18 @@ class Halligan:
             base = self.url
             urls = [(base + d).rstrip("\n") for d in self.read_file()]
             async with ClientSession() as session:
-                [await self.send_http_request(u, session) for u in urls]
-            print("\nLegitimate Paths Discovered")
-            print("----------------------------")
-            [print(x) for x in self.found]
-            print("\n")
+                apd = self.found.append
+                timeapd = self.times.append
+                [await self.send_http_request(u, session, apd, timeapd) for u in urls]
+            if len(self.found) > 0:
+                print("\nLegitimate Paths Discovered")
+                print("----------------------------")
+                [print(x) for x in self.found]
+                print("\n")
+            else:
+                print("No Legitimate Paths Discovered..")
+            avg = sum(self.times) / len(self.times)
+            print("Average Request Time: " + str(avg))
         except Exception as e:
             self.exceptor("controller", e)
 
