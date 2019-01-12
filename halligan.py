@@ -44,21 +44,23 @@ class Halligan:
             black_list = ["!","@","#","$","%","^","&","*","(",")","=","+",
                           "[","]","{","}","|",";","\"","\'",",",">","<","?"]
             if user_input:
-                if len(user_input) < 39:
+                if len(user_input) < 100:
                     for b in black_list:
                         if b in user_input:
+                            print("Input contains inappropriate characters.")
                             raise Exception
                         else:
                             continue
                     return True
                 else:
+                    print("Input is too large.")
                     raise Exception
             else:
                 print("validator received no input.")
                 raise Exception
         except Exception as e:
-            print("Validation Error!: " + str(e))
-            self.exceptor("validator", e)
+            print("Validation Error!" + str(e))
+            exit(1)
 
 
     def clear_screen(self) -> bool:
@@ -135,7 +137,16 @@ class Halligan:
         try:
             self.pre_run()
             base = self.url
-            urls = [(base + d).rstrip("\n") for d in self.read_file()]
+            urls = [d for d in self.read_file()]
+            clean_urls = []
+            apd = clean_urls.append
+            for u in urls:
+                if u.startswith("/"):
+                    apd(u)
+                else:
+                    apd("/" + u)
+            clean_urls = [d.rstrip("\n") for d in clean_urls]
+            urls = [base + d for d in clean_urls]
             procs = 512
             with ProcessPoolExecutor(procs) as pool:
                 pool.map(self.send_http_request, urls)
