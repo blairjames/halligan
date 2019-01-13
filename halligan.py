@@ -23,7 +23,7 @@ class Halligan:
 
     def get_args(self):
         try:
-            args = ArgumentParser()
+            args = ArgumentParser(description = "Example: halligan.py \"www.somesite.com\" \"/home/mine/dirbuster.txt\"")
             add = args.add_argument
             add("url", help="Base URL to which candidate directories are appended.")
             add("directory_list", help="list of candidate directories to be attempted forcefully.")
@@ -138,6 +138,8 @@ class Halligan:
             self.pre_run()
             base = self.url
             urls = [d for d in self.read_file()]
+
+            #TODO: make a url cleaning method
             clean_urls = []
             apd = clean_urls.append
             for u in urls:
@@ -147,6 +149,7 @@ class Halligan:
                     apd("/" + u)
             clean_urls = [d.rstrip("\n") for d in clean_urls]
             urls = [base + d for d in clean_urls]
+
             procs = 512
             with ProcessPoolExecutor(procs) as pool:
                 pool.map(self.send_http_request, urls)

@@ -1,23 +1,19 @@
-Path Discovered: https://fed.education.qld.gov.au/# Special thanks go to james (at) uncon sittinglittleduck com 
-Path Discovered: https://fed.education.qld.gov.au/# Pre conditions
-Path Discovered: https://fed.education.qld.gov.au/# Web server directory enumeration represents the process by which a low 
-Path Discovered: https://fed.education.qld.gov.au/# JBroFuzz achieves this by checking for the existence of the following 
-Path Discovered: https://fed.education.qld.gov.au/# you can brake JBroFuzz if you fuzz this file!)
-Path Discovered: https://fed.education.qld.gov.au/# skilled attacker can identify existing directories present on the server.
-Path Discovered: https://fed.education.qld.gov.au/#
-Path Discovered: https://fed.education.qld.gov.au/.
-Path Discovered: https://fed.education.qld.gov.au/# Any line in this file is regarded as a comment if it begins with a '#' (yes, 
-Path Discovered: https://fed.education.qld.gov.au/# Maximum line length			256
-Path Discovered: https://fed.education.qld.gov.au/??
-Path Discovered: https://fed.education.qld.gov.au/# 
-Path Discovered: https://fed.education.qld.gov.au/
-Path Discovered: https://fed.education.qld.gov.au/# Maximum number of lines		50000
-Path Discovered: https://fed.education.qld.gov.au/# directories.
-Path Discovered: https://fed.education.qld.gov.au/# Continue to look for directories out there!
-Path Discovered: https://fed.education.qld.gov.au/# Special characters will be encoded by JBroFuzz. As an example, a line entry
-Path Discovered: https://fed.education.qld.gov.au/# JBroFuzz Directory Enumeration Definitions for version 0.5
-Path Discovered: https://fed.education.qld.gov.au/# A bit of (directory enumeration) theory 
-Path Discovered: https://fed.education.qld.gov.au/# of 'li ve' will become 'li%20ve'
-Path Discovered: https://fed.education.qld.gov.au/# Copyright (C) 2007 subere (at) uncon org
-Path Discovered: https://fed.education.qld.gov.au/# -----------------------------------------------------------------------------
-Path Discovered: https://fed.education.qld.gov.au/# Version 0.5
+Path Discovered: https://www.tackleworld.com.au/# Special thanks go to james (at) uncon sittinglittleduck com 
+Path Discovered: https://www.tackleworld.com.au/includes
+Path Discovered: https://www.tackleworld.com.au/AP
+Path Discovered: https://www.tackleworld.com.au/page45
+Path Discovered: https://www.tackleworld.com.au/davos
+Path Discovered: https://www.tackleworld.com.au/# Web server directory enumeration represents the process by which a low 
+Path Discovered: https://www.tackleworld.com.au/Down
+Path Discovered: https://www.tackleworld.com.au/returns
+Path Discovered: https://www.tackleworld.com.au/advent
+Path Discovered: https://www.tackleworld.com.au/pipermail
+Path Discovered: https://www.tackleworld.com.au/page53
+Path Discovered: https://www.tackleworld.com.au/page54
+Path Discovered: https://www.tackleworld.com.au/contact
+Path Discovered: https://www.tackleworld.com.au/Bridge
+Path Discovered: https://www.tackleworld.com.au/page74
+Path Discovered: https://www.tackleworld.com.au/w
+Path Discovered: https://www.tackleworld.com.au/image
+Path Discovered: https://www.tackleworld.com.au/Paul
+Path Discovered: https://www.tackleworld.com.au/se
